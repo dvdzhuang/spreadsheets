@@ -12,9 +12,6 @@ import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.SimpleSpreadsheet;
 import edu.cs3500.spreadsheets.model.WorksheetModel;
 import edu.cs3500.spreadsheets.model.WorksheetReader;
-import edu.cs3500.spreadsheets.provider.controller2.StandardWorksheetController;
-import edu.cs3500.spreadsheets.provider.model2.StandardWorksheet;
-import edu.cs3500.spreadsheets.provider.view2.StandardWorksheetEnhancedView;
 import edu.cs3500.spreadsheets.view.WorksheetGraphView;
 import edu.cs3500.spreadsheets.view.WorksheetPanel;
 import edu.cs3500.spreadsheets.view.WorksheetTextualView;
@@ -76,11 +73,6 @@ public class BeyondGood {
               e.printStackTrace();
             }
             break;
-          case "-provider":
-            StandardWorksheet standard = new StandardWorksheet(simple);
-            new StandardWorksheetController(
-                    new StandardWorksheetEnhancedView(standard), standard).start();
-            break;
           default:
             throw new IllegalArgumentException("Must enter a valid command");
         }
@@ -98,10 +90,6 @@ public class BeyondGood {
       WorksheetModel simple = new SimpleSpreadsheet(new HashMap<>());
       GraphController con = new GraphController(simple,
               new WorksheetGraphView(new WorksheetPanel(simple), simple));
-    } else if (args[0].equals("-provider")) {
-      StandardWorksheet standard = new StandardWorksheet(new SimpleSpreadsheet(new HashMap<>()));
-      new StandardWorksheetController(new StandardWorksheetEnhancedView(standard),
-              standard).start();
     } else {
       throw new IllegalArgumentException("Must enter a valid command");
     }
